@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './Components/SearchBar';
 import WordDisplay from './Components/WordDisplay';
 import { useDictionaryApi } from './Hooks/useDictionaryApi';
+import NounSection from './Components/NounSection';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 		<>
 			<SearchBar word={word} setWord={setWord} search={search} />
 			<WordDisplay  word={word} data={data}/>
+			<NounSection data={data}/>
 		</>
 	);
 }
