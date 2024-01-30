@@ -7,11 +7,15 @@ const NounSection = ({data}) => {
 				<div>
 					<li className='text-2xl font-bold text-center'>{meaningsNoun[0].partOfSpeech}</li>
 
-					{meaningsNoun[0].definitions.map((def, index) => (
+					{meaningsNoun[0].definitions.slice(0, 3).map((def, index) => (
 						<div key={index}>
 							<p className='text-xl text-center'>{def.definition}</p>
+							
 						</div>
 					))}
+					
+					<h2 className="text-lg text-purple-700 text-bold text-center">
+						Synonyms: {meaningsNoun[0].synonyms}</h2>
 				</div>
 			)}
     </div>
