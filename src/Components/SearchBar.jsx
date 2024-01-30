@@ -1,3 +1,6 @@
+import { useContext, useState } from 'react';
+import { DictionaryContext } from '../Context/DictionaryProvider';
+
 const FormInput = ({ placeholder, className, value, onChange }) => (
 	<input
 		type='text'
@@ -14,15 +17,19 @@ const FormButton = ({ type, className, children, onClick }) => (
 	</button>
 );
 
-const SearchBar = ({ word, setWord, search }) => {
+const SearchBar = () => {
+	const { setWord, search } = useContext(DictionaryContext);
+	const [localWord, setLocalWord] = useState('');
+
 	const inputClass = 'border-2 border-gray-300 p-2 rounded-lg w-1/2 text-lg mt-5';
 	const buttonClass =
 		'btn btn-primary bg-purple-500 rounded-full py-2 px-4 hover:bg-purple-700 text-white mt-5';
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (word) {
-			search(word);
+		if (localWord) {
+			search(localWord);
+			setWord(localWord);
 		}
 	};
 
@@ -32,8 +39,8 @@ const SearchBar = ({ word, setWord, search }) => {
 				<FormInput
 					placeholder='Search Word'
 					className={inputClass}
-					value={word}
-					onChange={(e) => setWord(e.target.value)}
+					value={localWord}
+					onChange={(e) => setLocalWord(e.target.value)}
 				/>
 				<FormButton type='submit' className={buttonClass}>
 					Search

@@ -1,25 +1,28 @@
+import { useContext } from 'react';
+import { DictionaryContext } from '../Context/DictionaryProvider';
 
-const NounSection = ({data}) => {
-    const meaningsNoun = data && data[0] && data[0].meanings ? data[0].meanings : [];
-  return (
-    <div>
-    {meaningsNoun && meaningsNoun.length > 0 && (
+const NounSection = () => {
+	const { data } = useContext(DictionaryContext);
+	const meaningsNoun = data?.[0]?.meanings ?? [];
+	const titleClass = 'text-2xl font-bold text-center';
+	const definitionClass = 'text-xl text-center';
+	const synonymsClass = 'text-lg text-purple-700 text-bold text-center';
+
+	return (
+		<div>
+			{meaningsNoun.length > 0 && (
 				<div>
-					<li className='text-2xl font-bold text-center'>{meaningsNoun[0].partOfSpeech}</li>
-
+					<li className={titleClass}>{meaningsNoun[0].partOfSpeech}</li>
 					{meaningsNoun[0].definitions.slice(0, 3).map((def, index) => (
 						<div key={index}>
-							<p className='text-xl text-center'>{def.definition}</p>
-							
+							<p className={definitionClass}>{def.definition}</p>
 						</div>
 					))}
-					
-					<h2 className="text-lg text-purple-700 text-bold text-center">
-						Synonyms: {meaningsNoun[0].synonyms}</h2>
+					<h2 className={synonymsClass}>Synonyms: {meaningsNoun[0].synonyms}</h2>
 				</div>
 			)}
-    </div>
-  )
-}
+		</div>
+	);
+};
 
-export default NounSection
+export default NounSection;
