@@ -6,7 +6,7 @@ const NounSection = () => {
 	const meaningsNoun = data?.[0]?.meanings ?? [];
 	const titleClass = 'text-2xl font-bold text-center';
 	const definitionClass = 'text-xl text-center';
-	const synonymsClass = 'text-lg text-purple-700 text-bold text-center';
+	const synonymsClass = 'text-lg  text-bold text-center';
 
 	return (
 		<div>

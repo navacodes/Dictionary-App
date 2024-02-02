@@ -25,8 +25,8 @@ const WordDisplay = () => {
 
 	return (
 		<div>
-			<h1 className='text-5xl text-slate-800 font-bold text-center'>{word}</h1>
-			{phonetic && <p className='text-2xl font-bold text-center text-purple-700'>{phonetic}</p>}
+			<h1 className='text-5xl font-bold text-center '>{word}</h1>
+			{phonetic && <p className='text-2xl font-bold text-center text-primary'>{phonetic}</p>}
 			{phoneticAudio && (
 				<div>
 					<img
