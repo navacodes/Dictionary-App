@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import { DictionaryContext } from '../Context/DictionaryProvider';
-import IconPlayButton from '../assets/images/icon-play.svg';
 
 const WordDisplay = () => {
 	const { data } = useContext(DictionaryContext);
 	const [isPlaying, setIsPlaying] = useState(false);
 
-	const word = data && data[0] ? data[0].word : '';
+	const word =
+		data && data[0] ? data[0].word.charAt(0).toUpperCase() + data[0].word.slice(1).toLowerCase() : '';
 	const phonetic =
 		data && data[0] && data[0].phonetics && data[0].phonetics.find((p) => p.text)
 			? data[0].phonetics.find((p) => p.text).text
@@ -23,19 +23,30 @@ const WordDisplay = () => {
 		audio.play();
 	};
 
+	const titleClass = 'text-6xl font-bold';
+	const phoneticClass = 'text-2xl font-bold text-primary mr-auto ';
+	const svgClass = 'h-10 w-10 cursor-pointer hover:opacity-80 sm:h-14 sm:w-14';
+	const wrapper =
+		'flex flex-col justify-between gap-5 flex-wrap text-left pb-10 pt-10 sm:pt-10 sm:flex-row sm:items-center  sm:pb-0 sm:justify-start';
+
 	return (
-		<div>
-			<h1 className='text-5xl font-bold text-center '>{word}</h1>
-			{phonetic && <p className='text-2xl font-bold text-center text-primary'>{phonetic}</p>}
+		<div className={wrapper}>
+			<h1 className={titleClass}>{word}</h1>
+			{phonetic && <p className={phoneticClass}>{phonetic}</p>}
 			{phoneticAudio && (
-				<div>
-					<img
-						src={IconPlayButton}
-						alt='Play button'
-						className={`h-10 w-10 mx-auto cursor-pointer hover:opacity-80 `}
-						onClick={handlePlay}
-					/>
-				</div>
+				<svg
+					xmlns='http://www.w3.org/2000/svg'
+					width='75'
+					height='75'
+					viewBox='0 0 75 75'
+					fill='currentColor'
+					fillRule='evenodd'
+					className={svgClass}
+					onClick={handlePlay}
+				>
+					<circle cx='37.5' cy='37.5' r='37.5' opacity='.25' />
+					<path d='M29 27v21l21-10.5z' />
+				</svg>
 			)}
 		</div>
 	);

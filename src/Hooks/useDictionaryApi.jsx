@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useDictionaryApi = (initialWord) => {
 	const [word, setWord] = useState(initialWord);
@@ -7,28 +7,28 @@ export const useDictionaryApi = (initialWord) => {
 	const [error, setError] = useState(null);
 
 	const search = async (word) => {
-		console.log(word);
+		setError(null);
 		setIsLoading(true);
 		const ApiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 		try {
-			
 			const response = await fetch(ApiUrl);
-			console.log(response);
+			if (!response.ok) {
+				const errorData = await response.json();
+				setError(errorData.message);
+				setIsLoading(false);
+				return;
+			}
 			const data = await response.json();
-			console.log(data);
-
 			setData(data);
 			setIsLoading(false);
+			setError(null);
+			return true;
 		} catch (error) {
-			setError(error);
+			setError(error.message);
+			setIsLoading(false);
+			return false;
 		}
 	};
-
-	useEffect(() => {
-		if (word) {
-			search(word);
-		}
-	}, [word]);
 
 	return { data, isLoading, error, search, setWord };
 };

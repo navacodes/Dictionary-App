@@ -18,23 +18,29 @@ const FormButton = ({ type, className, children, onClick }) => (
 );
 
 const SearchBar = () => {
-	const { setWord, search } = useContext(DictionaryContext);
+	const { setWord, search, error } = useContext(DictionaryContext);
 	const [localWord, setLocalWord] = useState('');
 
-	const inputClass = 'border-2 border-gray-300 p-2 rounded-lg w-1/2 text-lg mt-5';
-	const buttonClass =
-		'btn btn-primary rounded-full py-2 px-4 mt-5';
+	const inputClass = 'border-2 p-2 rounded-md w-full text-lg ';
+	const buttonClass = 'btn rounded-tl-lg rounded-bl-lg btn-primary ';
+	const wrapper = 'rounded-lg mt-5 ml-0 pl-0';
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (localWord) {
-			search(localWord);
-			setWord(localWord);
+			const success = await search(localWord);
+			if (success) {
+				setWord(localWord);
+				setLocalWord('');
+			} else {
+				setLocalWord('');
+				setWord('');	
+			}
+			console.log('success', success);
 		}
 	};
-
 	return (
-		<div>
+		<div className={wrapper}>
 			<form onSubmit={handleSubmit} className='flex justify-center items-center space-x-2'>
 				<FormInput
 					placeholder='Search Word'
@@ -46,6 +52,7 @@ const SearchBar = () => {
 					Search
 				</FormButton>
 			</form>
+			{error && <p className='text-center text-error text-sm mt-2'>{error}</p>}
 		</div>
 	);
 };

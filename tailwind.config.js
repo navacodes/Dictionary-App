@@ -7,6 +7,5 @@ export default {
 	plugins: [require('daisyui')],
 	daisyui: {
 		themes: ['cupcake', 'night'],
-		// The element that receives theme color CSS variables
 	},
 };
