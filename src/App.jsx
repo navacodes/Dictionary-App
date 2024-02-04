@@ -7,9 +7,10 @@ import MenuBar from './Components/MenuBar';
 import { DictionaryProvider } from './Context/DictionaryProvider'; // Assuming you renamed UserContextProvider to DictionaryProvider
 
 function App() {
+	const wrapper = 'flex flex-col flex-wrap text-left m-auto p-10 max-w-6xl mx-auto';
 	return (
 		<DictionaryProvider>
-			<div className='flex flex-col flex-wrap text-left m-auto p-10 max-w-6xl mx-auto'>
+			<div className={wrapper}>
 				<MenuBar />
 				<SearchBar />
 				<WordDisplay />

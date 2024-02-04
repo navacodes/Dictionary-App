@@ -14,7 +14,7 @@ export const ThemeToggle = () => {
 
 	const labelClass = 'flex cursor-pointer gap-2';
 	const inputClass = 'toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2';
-	const wrapper = 'flex justify-end gap-2';
+	const wrapper = 'flex self-center gap-2';
 
 	const sunSVG = (
 		<svg
