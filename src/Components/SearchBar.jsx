@@ -36,7 +36,7 @@ const SearchBar = () => {
 				setLocalWord('');
 				setWord('');	
 			}
-			console.log('success', success);
+			// console.log('success', success);
 		}
 	};
 	return (

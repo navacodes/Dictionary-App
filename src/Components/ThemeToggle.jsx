@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
 
 export const ThemeToggle = () => {
-	const [theme, setTheme] = useState('cupcake');
+	const [theme, setTheme] = useState(localStorage.getItem('theme') || 'cupcake');
 
 	useEffect(() => {
 		themeChange(false, theme);
+		localStorage.setItem('theme', theme);
 	}, [theme]);
 
 	const handleThemeChange = (e) => {
+		// console.log('Theme change event:', e.target.checked);
 		setTheme(e.target.checked ? 'cupcake' : 'night');
 	};
 
