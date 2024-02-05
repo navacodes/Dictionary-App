@@ -2,16 +2,23 @@ import { useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
 
 export const ThemeToggle = () => {
-	const [theme, setTheme] = useState(localStorage.getItem('theme') || 'cupcake');
+	const prefersDarkMode =
+		window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const [theme, setTheme] = useState(
+		localStorage.getItem('theme') || (prefersDarkMode ? 'night' : 'cupcake')
+	);
 
 	useEffect(() => {
-		themeChange(false, theme);
 		localStorage.setItem('theme', theme);
+		themeChange(false, theme);
 	}, [theme]);
 
 	const handleThemeChange = (e) => {
-		// console.log('Theme change event:', e.target.checked);
-		setTheme(e.target.checked ? 'cupcake' : 'night');
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+			setTheme('cupcake');
+		} else {
+			setTheme(e.target.checked ? 'cupcake' : 'night');
+		}
 	};
 
 	const labelClass = 'flex cursor-pointer gap-2';
@@ -54,7 +61,7 @@ export const ThemeToggle = () => {
 	return (
 		<div className={wrapper}>
 			<label className={labelClass}>
-				{sunSVG}
+				{moonSVG}
 				<input
 					data-toggle-theme={theme}
 					data-act-class='ACTIVECLASS'
@@ -63,7 +70,7 @@ export const ThemeToggle = () => {
 					onChange={handleThemeChange}
 					className={inputClass}
 				/>
-				{moonSVG}
+				{sunSVG}
 			</label>
 		</div>
 	);

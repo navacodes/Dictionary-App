@@ -34,7 +34,7 @@ const SearchBar = () => {
 				setLocalWord('');
 			} else {
 				setLocalWord('');
-				setWord('');	
+				setWord('');
 			}
 			// console.log('success', success);
 		}
