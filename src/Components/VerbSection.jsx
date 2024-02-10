@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { DictionaryContext } from '../Context/DictionaryProvider';
+import IconNewWindow from '../assets/images/icon-new-window.svg';
 
 const VerbSection = () => {
 	const { data } = useContext(DictionaryContext);
@@ -28,8 +29,9 @@ const VerbSection = () => {
 			{source && (
 				<h2 className={sourceClass}>
 					Source:{' '}
-					<a href={source} target='_blank' rel='noopener noreferrer'>
+					<a href={source} target='_blank' rel='noopener noreferrer' className='underline'>
 						{source}
+						<img className='inline-block mb-1 ml-3' src={IconNewWindow} alt='' />
 					</a>
 				</h2>
 			)}

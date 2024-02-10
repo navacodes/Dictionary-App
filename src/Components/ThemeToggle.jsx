@@ -10,7 +10,7 @@ export const ThemeToggle = () => {
 
 	useEffect(() => {
 		localStorage.setItem('theme', theme);
-		themeChange(false, theme);
+		themeChange(theme);
 	}, [theme]);
 
 	const handleThemeChange = (e) => {
