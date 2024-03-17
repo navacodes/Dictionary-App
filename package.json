@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https://dnava24.github.io/Dictionary-App/",
+	"homepage": "https://navacodes.github.io/Dictionary-App/",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
