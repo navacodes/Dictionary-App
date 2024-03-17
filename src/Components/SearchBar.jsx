@@ -22,7 +22,7 @@ const SearchBar = () => {
 	const [localWord, setLocalWord] = useState('');
 
 	const inputClass = 'border-2 p-2 rounded-md w-full text-lg ';
-	const buttonClass = 'btn rounded-tl-lg rounded-bl-lg btn-primary ';
+	const buttonClass = 'btn rounded-tl-lg rounded-bl-lg btn-accent ';
 	const wrapper = 'rounded-lg mt-5 ml-0 pl-0';
 
 	const handleSubmit = async (e) => {
