@@ -1,6 +1,6 @@
 # Word Search Dictionary App
 
-![Word Search Dictionary App Screenshot](screenshot.png)
+![Word Search Dictionary App Screenshot](dictionaryscreenshot.png)
 
 This project is a simple word search dictionary app built as a solution to a frontend mentor project. It was my first React project where I had the opportunity to work with an external API. My main goal for this project was to understand state management and API requests within a React application.
 
