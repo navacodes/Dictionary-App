@@ -14,11 +14,7 @@ export const ThemeToggle = () => {
 	}, [theme]);
 
 	const handleThemeChange = (e) => {
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-			setTheme('cupcake');
-		} else {
-			setTheme(e.target.checked ? 'cupcake' : 'night');
-		}
+		setTheme(e.target.checked ? 'cupcake' : 'night');
 	};
 
 	const labelClass = 'flex cursor-pointer gap-2';
