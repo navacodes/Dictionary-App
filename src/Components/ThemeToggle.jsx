@@ -13,9 +13,11 @@ export const ThemeToggle = () => {
     themeChange(theme);
   }, [theme]);
 
-  const handleThemeChange = (e) => {
-      setTheme(e.target.checked ? 'cupcake' : 'night');
-  };
+
+	const handleThemeChange = (e) => {
+		setTheme(e.target.checked ? 'cupcake' : 'night');
+	};
+
 
   const labelClass = 'flex cursor-pointer gap-2';
   const inputClass = 'toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2';
@@ -58,20 +60,22 @@ export const ThemeToggle = () => {
     </svg>
   );
 
-  return (
-    <div className={wrapper}>
-      <label className={labelClass}>
-        {moonSVG}
-        <input
-          data-toggle-theme={theme}
-          data-act-class='ACTIVECLASS'
-          type='checkbox'
-          checked={theme === 'cupcake'}
-          onChange={handleThemeChange}
-          className={inputClass}
-        />
-        {sunSVG}
-      </label>
-    </div>
-  );
+
+	return (
+		<div className={wrapper}>
+			<label className={labelClass}>
+				{moonSVG}
+				<input
+					data-toggle-theme={theme}
+					data-act-class='ACTIVECLASS'
+					type='checkbox'
+					checked={theme === 'cupcake'}
+					onChange={handleThemeChange}
+					className={inputClass}
+				/>
+				{sunSVG}
+			</label>
+		</div>
+	);
 };
+
